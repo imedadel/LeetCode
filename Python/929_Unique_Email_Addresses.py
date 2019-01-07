@@ -4,13 +4,14 @@ class Solution:
         :type emails: List[str]
         :rtype: int
         """
+        cleanEmails = set()
         
         for email in emails:
-            indexOfAt = email.rfind("@")
-            while email.find(".") < indexOfAt:
-                email = email.replace(".", "")
-            if "+" in email:
-                email = "".join(list(email)[email.find("+"),indexOfAt-1])
+            local, domain = email.split("@")
+            
+            if "+" in local:
+                local = local[:local.index("+")]
+            local = local.replace(".","")
+            cleanEmails.add(local + "@" + domain)
         
-        emails = list(set(emails))
-        return len(emails)
+        return len(cleanEmails)
