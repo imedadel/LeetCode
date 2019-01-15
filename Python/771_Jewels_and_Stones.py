@@ -5,8 +5,8 @@ class Solution:
         :type S: str
         :rtype: int
         """
-        myJewels = [*J]
-        count = 0
+        ans = 0
         for stone in S:
-            if stone in myJewels: count += 1
-        return count
+            if stone in J:
+                ans += 1
+        return ans
