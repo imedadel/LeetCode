@@ -5,11 +5,5 @@ class Solution:
         :rtype: int
         """
         MORSE = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
-        trans = set()
         
-        for word in words:
-            enWord = ""
-            for c in word:
-                enWord += MORSE[ord(c) - ord("a")]
-            trans.add(enWord)
-        return len(trans)
+        return len({"".join(MORSE[ord(c) - ord("a")] for c in word) for word in words})
